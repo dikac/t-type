@@ -1,0 +1,37 @@
+{
+  "name": "@dikac/t-type",
+  "version": "0.1.0",
+  "description": "Typescript type",
+  "dependencies": {
+    "@dikac/deployer": "^0.1.5"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^3.5.10",
+    "cpy-cli": "^3.1.1",
+    "jasmine": "^3.4.0",
+    "json-properties-remover": "^0.1.2",
+    "move-cli": "^1.2.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.9.5"
+  },
+  "scripts": {
+    "spec-run": "jasmine --config=./jasmine.json",
+    "spec": "npm-run-all compile spec-compile spec-run",
+    "spec-compile": "npm-run-all --parallel spec-compile-script ",
+    "spec-compile-watch": "npm-run-all --parallel spec-compile-watch-script",
+    "spec-compile-script": "tsc -p tsconfig-spec.json",
+    "spec-compile-watch-script": "tsc -w -p tsconfig-spec.json",
+    "compile": "tsc",
+    "compile-watch": "tsc -w",
+    "release": "remove-json-properties dist/package.json private",
+    "postrelease": "npm publish dist",
+    "prerelease": "cpy     package.json package-lock.json LICENSE Readme.md .npmignore dist",
+    "postpublish": "rimraf package.json package-lock.json LICENSE Readme.md .npmignore",
+    "postinstall": "npm run deploy",
+    "deploy": "deployer /.git /dist /"
+  },
+  "private": true,
+  "author": "",
+  "license": "MIT"
+}
