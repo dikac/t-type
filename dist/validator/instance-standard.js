@@ -11,7 +11,7 @@
     Object.defineProperty(exports, "__esModule", { value: true });
     const instance_1 = require("./instance");
     const instance_2 = require("../validatable/string/instance");
-    function InstanceStandard(value, instance) {
+    function InstanceStandard(instance) {
         return new instance_1.default(instance, instance_2.default);
     }
     exports.default = InstanceStandard;

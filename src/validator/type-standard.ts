@@ -5,7 +5,6 @@ import StringType from "../validatable/string/type";
 export default function TypeStandard<
     TypeT extends Native
 >(
-    value : unknown,
     type : TypeT
 ) : Type<TypeT, string> {
 
