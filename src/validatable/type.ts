@@ -8,18 +8,19 @@ import TypeBoolean from "../value/boolean/type";
 import TypeInterface from "../type/type";
 import Native from "../string/native";
 
-export default class Type<L extends Native, Msg>
-    extends MergeWrapper<Value<unknown>, Message<Msg>, Validatable>
+
+export default class Type<TypeT extends Native, MessageT>
+    extends MergeWrapper<Value<unknown>, Message<MessageT>, Validatable>
 {
-    readonly type : L;
+    readonly type : TypeT;
 
     constructor(
         value : unknown,
-        type : L,
-        message : Function<[Readonly<Value<unknown> & TypeInterface<L> & Validatable>], Msg>,
+        type : TypeT,
+        message : Function<[Readonly<Value<unknown> & TypeInterface<TypeT> & Validatable>], MessageT>,
     ) {
 
-        let container : Value<unknown> & TypeInterface<L> = {
+        let container : Value<unknown> & TypeInterface<TypeT> = {
             type : type,
             value : value,
         };
