@@ -9,5 +9,5 @@ export default function Type<Instance extends {new(...a:unknown[]): any}>(
     error : Fn<[unknown, Instance], Error> = NumberError
 ) : asserts value is Instance {
 
-    Callback([value, instance], Guard, error);
+    Callback<[unknown, Instance]>([value, instance], Guard, error);
 }

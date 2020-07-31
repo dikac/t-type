@@ -8,7 +8,7 @@ describe(`compiler compatible`,function() {
     describe('explicit', ()=>{
 
         let validator = new Typeof<"string">( 'string', TypeofString);
-        let validatable = validator.validate('ab');
+        let validatable = validator.validate(1);
 
         if(validatable.valid) {
 
@@ -28,20 +28,17 @@ describe(`compiler compatible`,function() {
     describe('implicit', ()=>{
 
         let validator = new Typeof( 'string', TypeofString);
-        let validatable = validator.validate('ab');
+        let validatable = validator.validate(1);
 
         if(validatable.valid) {
 
-            // @ts-expect-error
             let type : "string" = validator.type;
-            // @ts-expect-error
             let string : string = validatable.value;
 
         } else {
 
             // @ts-expect-error
             let string : string = validatable.value;
-            // @ts-expect-error
             let type : "string" = validator.type;
         }
 

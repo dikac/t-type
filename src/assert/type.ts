@@ -10,5 +10,5 @@ export default function Type(
     error : Fn<[unknown, Native], Error> = TypeError
 ) : asserts value is Native {
 
-    Callback([value, type], Guard, error);
+    Callback<[unknown, Native]>([value, type], Guard, error);
 }

@@ -10,18 +10,18 @@ describe(`compiler compatible`,function() {
 
         describe('explicit', ()=>{
 
-            let validator = new Instance<StringConstructor>(String, InstanceString);
+            let validator = new Instance(String, InstanceString);
             let validatable = validator.validate('ab');
 
             if(validatable.valid) {
 
                 let type : StringConstructor = validator.instance;
-                let string : String = validatable.value;
+                let string : StringConstructor = validatable.value;
 
             } else {
 
                 // @ts-expect-error
-                let string : String = validatable.value;
+                let string : StringConstructor = validatable.value;
                 let type : StringConstructor = validator.instance;
             }
 
@@ -34,17 +34,13 @@ describe(`compiler compatible`,function() {
 
             if(validatable.valid) {
 
-                // @ts-expect-error
                 let type : StringConstructor = validator.instance;
-
-                let string : String = validatable.value;
+                let string : StringConstructor = validatable.value;
 
             } else {
 
                 // @ts-expect-error
-                let string : String = validatable.value;
-
-                // @ts-expect-error
+                let string : StringConstructor = validatable.value;
                 let type : StringConstructor = validator.instance;
             }
 
@@ -56,6 +52,7 @@ describe(`compiler compatible`,function() {
         class Test {
             constructor(data) {
             }
+            data () {}
         }
 
         describe('explicit', ()=>{
@@ -66,13 +63,17 @@ describe(`compiler compatible`,function() {
             if(validatable.valid) {
 
                 let type : {new(data):Test} = validator.instance;
-                let string : Test = validatable.value;
+                let string : {new(data):Test}  = validatable.value;
+                // @ts-expect-error
+                let instance : Test = validatable.value;
 
             } else {
 
                 let type : {new(data):Test} = validator.instance;
                 // @ts-expect-error
-                let string : Test = validatable.value;
+                let string : {new(data):Test}  = validatable.value;
+                // @ts-expect-error
+                let instance : Test = validatable.value;
             }
 
         });
@@ -84,17 +85,19 @@ describe(`compiler compatible`,function() {
 
             if(validatable.valid) {
 
-
                 let type : {new(data):Test} = validator.instance;
-
-                let string : Test = validatable.value;
+                // @ts-expect-error
+                let instance : Test = validatable.value;
+                let test : {new(data):Test}  = validatable.value;
 
             } else {
 
                 let type : {new(data):Test} = validator.instance;
 
                 // @ts-expect-error
-                let string : Test = validatable.value;
+                let instance : Test = validatable.value;
+                // @ts-expect-error
+                let test : {new(data):Test} = validatable.value;
             }
 
         });

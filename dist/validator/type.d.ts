@@ -1,15 +1,13 @@
 import Validator from "@dikac/t-validator/validator";
-import Validatable from "@dikac/t-validatable/validatable";
 import Message from "@dikac/t-message/message";
-import Value from "@dikac/t-value/value";
 import Function from "@dikac/t-function/function";
+import TypeofValidatable from "../validatable/type";
 import StringNative from "../string/native";
-import TypeInterface from "../type/type";
 import Native from "../native/native";
-export declare type Return<L extends StringNative, Msg> = (Validatable<true> & Message<Msg> & Value<Native<L>> & TypeInterface<L>) | (Validatable<false> & Message<Msg> & Value<unknown> & TypeInterface<L>);
-export default class Typeof<L extends StringNative = StringNative, Msg = unknown> implements Validator<unknown, Readonly<Return<L, Msg>>>, Message<Function<[Return<L, Msg>], Msg>> {
-    type: L;
-    message: Function<[Return<L, Msg>], Msg>;
-    constructor(type: L, message: Function<[Return<L, Msg>], Msg>);
-    validate(value: unknown): Readonly<Return<L, Msg>>;
+import Construct from "@dikac/t-validator/return/construct";
+export default class Typeof<TypeName extends StringNative = StringNative, MessageT = unknown> implements Validator<any, Native<TypeName>, TypeofValidatable<TypeName, MessageT>>, Message<Function<[Omit<Construct<any, any, Native<TypeName>>, 'message'>], MessageT>> {
+    type: TypeName;
+    message: Function<[Omit<Construct<any, any, Native<TypeName>>, 'message'>], MessageT>;
+    constructor(type: TypeName, message: Function<[Omit<Construct<any, any, Native<TypeName>>, 'message'>], MessageT>);
+    validate<Argument extends any>(value: Argument): Construct<any, Argument, Native<TypeName>, TypeofValidatable<TypeName, MessageT>>;
 }
