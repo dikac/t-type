@@ -1,18 +1,18 @@
 {
   "name": "@dikac/t-type",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Typescript type",
   "dependencies": {
     "@dikac/deployer": "^0.1.5",
     "@dikac/t-function": "^0.11.0",
     "@dikac/t-message": "^0.8.0",
-    "@dikac/t-validatable": "^0.17.5",
-    "@dikac/t-validator": "^0.12.0",
-    "@dikac/t-value": "^0.10.0",
-    "ts-toolbelt": "^6.13.36"
+    "@dikac/t-validatable": "^0.18.0",
+    "@dikac/t-validator": "^0.13.1",
+    "@dikac/t-value": "^0.11.2",
+    "ts-toolbelt": "^6.13.37"
   },
   "devDependencies": {
-    "@types/jasmine": "^3.5.11",
+    "@types/jasmine": "^3.5.12",
     "@types/node": "^12.12.53",
     "cpy-cli": "^3.1.1",
     "jasmine": "^3.6.1",

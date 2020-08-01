@@ -1,5 +1,5 @@
 import Instance from "../../dist/boolean/instance";
-import Type from "../../dist/boolean/type";
+
 it("enable console log", () => { spyOn(console, 'log').and.callThrough();});
 
 describe("compiler compatible", function() {

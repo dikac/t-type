@@ -1,5 +1,0 @@
-import InstanceInterface from "../instance";
-
-type Value<Type> = Type extends InstanceInterface<infer As> ? As : never;
-
-export default Value;

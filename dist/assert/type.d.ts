@@ -1,3 +1,3 @@
 import Fn from "@dikac/t-function/function";
-import Native from "../string/native";
-export default function Type(value: unknown, type: Native, error?: Fn<[unknown, Native], Error>): asserts value is Native;
+import TypeString from "../string/native";
+export default function Type<TypeName extends TypeString = TypeString>(value: unknown, type: TypeName, error?: Fn<[unknown, TypeName], Error>): asserts value is TypeName;

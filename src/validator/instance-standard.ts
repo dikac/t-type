@@ -1,4 +1,3 @@
-import Native from "../string/native";
 import Instance from "./instance";
 import StringInstance from "../validatable/string/instance";
 

@@ -9,7 +9,7 @@ import TypeInterface from "../type/type";
 import Native from "../string/native";
 
 
-export default class Type<TypeT extends Native, MessageT>
+export default class Type<TypeT extends Native = Native, MessageT = unknown>
     extends MergeWrapper<Value<unknown>, Message<MessageT>, Validatable>
 {
     readonly type : TypeT;

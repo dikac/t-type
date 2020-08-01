@@ -3,7 +3,7 @@ import Type from "./type";
 import StringType from "../validatable/string/type";
 
 export default function TypeStandard<
-    TypeT extends Native
+    TypeT extends Native = Native
 >(
     type : TypeT
 ) : Type<TypeT, string> {
