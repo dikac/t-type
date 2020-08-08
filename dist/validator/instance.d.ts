@@ -1,8 +1,8 @@
-import Validator from "@dikac/t-validator/validator";
+import Validator from "@dikac/t-validator/simple";
 import Message from "@dikac/t-message/message";
 import Function from "@dikac/t-function/function";
 import InstanceofValidatable from "../validatable/instance";
-import Return from "@dikac/t-validator/return/return";
+import Return from "@dikac/t-validator/validatable/simple";
 export default class Instanceof<InstanceT extends {
     new (...a: unknown[]): any;
 } = {
