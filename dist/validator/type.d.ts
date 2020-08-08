@@ -5,7 +5,8 @@ import TypeofValidatable from "../validatable/type";
 import StringNative from "../string/native";
 import Native from "../native/native";
 import Return from "@dikac/t-validator/validatable/simple";
-export default class Typeof<TypeName extends StringNative = StringNative, MessageT = unknown> implements Validator<any, Native<TypeName>, TypeofValidatable<TypeName, MessageT>>, Message<Function<[Omit<Return<any, any, Native<TypeName>>, 'message'>], MessageT>> {
+export declare type Interface<TypeName extends StringNative, MessageT = unknown> = Validator<any, Native<TypeName>, TypeofValidatable<TypeName, MessageT>> & Message<Function<[Omit<Return<any, any, Native<TypeName>>, 'message'>], MessageT>>;
+export default class Typeof<TypeName extends StringNative = StringNative, MessageT = unknown> implements Interface<TypeName, MessageT> {
     type: TypeName;
     message: Function<[Omit<Return<any, any, Native<TypeName>>, 'message'>], MessageT>;
     constructor(type: TypeName, message: Function<[Omit<Return<any, any, Native<TypeName>>, 'message'>], MessageT>);

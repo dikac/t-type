@@ -1,3 +1,3 @@
-import Native from "../string/native";
-import Type from "./type";
-export default function TypeStandard<TypeT extends Native = Native>(type: TypeT): Type<TypeT, string>;
+import NativeList from "../string/native";
+import { Interface } from "./type";
+export default function TypeStandard<TypeT extends NativeList = NativeList>(type: TypeT): Interface<TypeT, string>;

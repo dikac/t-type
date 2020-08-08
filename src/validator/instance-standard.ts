@@ -1,11 +1,11 @@
-import Instance from "./instance";
+import Instance, {Interface} from "./instance";
 import StringInstance from "../validatable/string/instance";
 
 export default function InstanceStandard<
     InstanceT extends {new(...a:unknown[]): any}
 >(
     instance : InstanceT
-) : Instance<InstanceT, string> {
+) : Interface<InstanceT, string> {
 
-    return <Instance<InstanceT, string>> new Instance(instance, StringInstance)
+    return <Interface<InstanceT, string>> new Instance(instance, StringInstance)
 }

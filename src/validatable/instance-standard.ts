@@ -1,7 +1,6 @@
 import Instance from "./instance";
 import StringInstance from "./string/instance";
 
-
 export default function InstanceStandard<
     InstanceT extends {new(...a:unknown[]): any}
 >(

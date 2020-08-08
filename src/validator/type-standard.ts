@@ -1,12 +1,12 @@
-import Native from "../string/native";
-import Type from "./type";
+import NativeList from "../string/native";
+import Type, {Interface} from "./type";
 import StringType from "../validatable/string/type";
 
 export default function TypeStandard<
-    TypeT extends Native = Native
+    TypeT extends NativeList = NativeList
 >(
     type : TypeT
-) : Type<TypeT, string> {
+) : Interface<TypeT, string> {
 
-    return <Type<TypeT, string>> new Type(type, StringType)
+    return <Interface<TypeT, string>> new Type(type, StringType)
 }

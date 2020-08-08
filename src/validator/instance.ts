@@ -4,10 +4,18 @@ import Function from "@dikac/t-function/function";
 import InstanceofValidatable from "../validatable/instance";
 import Return from "@dikac/t-validator/validatable/simple";
 
-export default class Instanceof<InstanceT extends {new(...a:unknown[]): any} = {new(...a:unknown[]): any}, MessageT = unknown>
-    implements
-        Validator<any, InstanceT, InstanceofValidatable<InstanceT, MessageT>>,
-        Message<Function<[Omit<Return<any, any, InstanceT>, 'message'>], MessageT>>
+export type Interface<
+    InstanceT extends {new(...a:unknown[]): any},
+    MessageT = unknown
+> = Validator<any, InstanceT, InstanceofValidatable<InstanceT, MessageT>> &
+    Message<Function<[Omit<Return<any, any, InstanceT>, 'message'>], MessageT>>
+
+
+export default class Instanceof<
+    InstanceT extends {new(...a:unknown[]): any} = {new(...a:unknown[]): any},
+    MessageT = unknown
+>
+    implements Interface<InstanceT, MessageT>
 {
     constructor(
         public instance : InstanceT,
