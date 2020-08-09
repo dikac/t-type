@@ -7,18 +7,18 @@ import MessageCallback from "@dikac/t-validator/validatable/callback";
 import InstanceBoolean from "../value/boolean/instance";
 import InstanceInterface from "../instance/instance";
 
-export default class Instance<InstanceT extends {new(...a:unknown[]): any}, Msg>
-    extends MergeWrapper<Value<unknown>, Message<Msg>, Validatable>
+export default class Instance<ValueT, InstanceT extends {new(...a:unknown[]): any}, MessageT>
+    extends MergeWrapper<Value<ValueT>, Message<MessageT>, Validatable>
 {
     readonly instance : InstanceT;
 
     constructor(
-        value : unknown,
+        value : ValueT,
         instance : InstanceT,
-        message : Function<[Readonly<Value<unknown> & InstanceInterface<InstanceT> & Validatable>], Msg>,
+        message : Function<[Readonly<Value<ValueT> & InstanceInterface<InstanceT> & Validatable>], MessageT>,
     ) {
 
-        let container : Value<unknown> & InstanceInterface<InstanceT> = {
+        let container : Value<ValueT> & InstanceInterface<InstanceT> = {
             instance : instance,
             value : value,
         };

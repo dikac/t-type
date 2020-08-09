@@ -108,17 +108,17 @@ describe(`validate`,function() {
 
     describe('native', ()=>{
 
-        let validator = new Instance<StringConstructor>( String, InstanceString);
+        let validator = new Instance<StringConstructor>(String, InstanceString);
 
         it('valid', ()=>{
 
-            let validatable = validator.validate(String);
+            let validatable = validator.validate(new String);
 
             expect(validator.instance).toBe(String);
 
-            expect(validatable.valid).toBe(false);
+            expect(validatable.valid).toBe(true);
             expect(validatable.instance).toBe(String);
-            expect(validatable.value).toBe(String);
+            expect(validatable.value).toBeInstanceOf(String);
         });
 
         it('invalid', ()=>{

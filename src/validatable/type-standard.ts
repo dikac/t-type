@@ -4,11 +4,12 @@ import StringType from "./string/type";
 
 
 export default function TypeStandard<
-    TypeT extends Native = Native
+    TypeT extends Native = Native,
+    Value = unknown
 >(
-    value : unknown,
+    value : Value,
     type : TypeT
-) : Type<TypeT, string> {
+) : Type<Value, TypeT, string> {
 
-    return <Type<TypeT, string>> new Type(value, type, StringType)
+    return <Type<Value, TypeT, string>> new Type(value, type, StringType)
 }

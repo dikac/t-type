@@ -2,11 +2,12 @@ import Instance from "./instance";
 import StringInstance from "./string/instance";
 
 export default function InstanceStandard<
-    InstanceT extends {new(...a:unknown[]): any}
+    InstanceT extends {new(...a:unknown[]): any},
+    Value = unknown
 >(
     value : unknown,
     instance : InstanceT
-) : Instance<InstanceT, string> {
+) : Instance<Value, InstanceT, string> {
 
-    return <Instance<InstanceT, string>> new Instance(value, instance, StringInstance)
+    return <Instance<Value, InstanceT, string>> new Instance(value, instance, StringInstance)
 }

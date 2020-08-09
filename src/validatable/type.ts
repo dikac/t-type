@@ -9,18 +9,18 @@ import TypeInterface from "../type/type";
 import Native from "../string/native";
 
 
-export default class Type<TypeT extends Native = Native, MessageT = unknown>
-    extends MergeWrapper<Value<unknown>, Message<MessageT>, Validatable>
+export default class Type<ValueT = unknown, TypeT extends Native = Native, MessageT = unknown>
+    extends MergeWrapper<Value<ValueT>, Message<MessageT>, Validatable>
 {
     readonly type : TypeT;
 
     constructor(
-        value : unknown,
+        value : ValueT,
         type : TypeT,
-        message : Function<[Readonly<Value<unknown> & TypeInterface<TypeT> & Validatable>], MessageT>,
+        message : Function<[Readonly<Value<ValueT> & TypeInterface<TypeT> & Validatable>], MessageT>,
     ) {
 
-        let container : Value<unknown> & TypeInterface<TypeT> = {
+        let container : Value<ValueT> & TypeInterface<TypeT> = {
             type : type,
             value : value,
         };

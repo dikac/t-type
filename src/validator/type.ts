@@ -5,9 +5,10 @@ import TypeofValidatable from "../validatable/type";
 import StringNative from "../string/native";
 import Native from "../native/native";
 import Return from "@dikac/t-validator/validatable/simple";
+import Replace from "@dikac/t-validatable/boolean/replace";
 
 export type Interface<TypeName extends StringNative, MessageT = unknown> =
-    Validator<any, Native<TypeName>, TypeofValidatable<TypeName, MessageT>> &
+    Validator<unknown, Native<TypeName>, TypeofValidatable<unknown, TypeName, MessageT>> &
     Message<Function<[Omit<Return<any, any, Native<TypeName>>, 'message'>], MessageT>>;
 
 export default class Typeof<
@@ -22,8 +23,10 @@ export default class Typeof<
     ) {
     }
 
-    validate<Argument extends any>(value: Argument): Return<any, Argument, Native<TypeName>, TypeofValidatable<TypeName, MessageT>> {
+    validate<Argument extends Native<TypeName>>(value: Argument): Replace<TypeofValidatable< Argument, TypeName, MessageT>, true>
+    validate<Argument extends any>(value: Argument): Return<any, Argument, Native<TypeName>, TypeofValidatable<Argument, TypeName, MessageT>>
+    validate<Argument extends any>(value: Argument) {
 
-        return <Return<any, Argument, Native<TypeName>, TypeofValidatable<TypeName, MessageT>>> new TypeofValidatable(value, this.type, this.message);
+        return <Return<any, Argument, Native<TypeName>, TypeofValidatable< Argument, TypeName, MessageT>>> new TypeofValidatable(value, this.type, this.message);
     }
 }
