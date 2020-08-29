@@ -1,6 +1,5 @@
 import Validator from "@dikac/t-validator/simple";
 import Message from "@dikac/t-message/message";
-import Function from "@dikac/t-function/function";
 import InstanceofValidatable from "../validatable/instance";
 import Return from "@dikac/t-validator/validatable/simple";
 import Replace from "@dikac/t-validatable/boolean/replace";
@@ -10,7 +9,7 @@ export type Interface<
     InstanceT extends {new(...a:unknown[]): any},
     MessageT = unknown
 > = Validator<any, InstanceT, InstanceofValidatable<any, InstanceT, MessageT>> &
-    Message<Function<[Omit<Return<any, any, InstanceT>, 'message'>], MessageT>>
+    Message<(result:Omit<Return<any, any, InstanceT>, 'message'>)=>MessageT>
 
 
 export default class Instanceof<
@@ -21,7 +20,7 @@ export default class Instanceof<
 {
     constructor(
         public instance : InstanceT,
-        public message : Function<[Omit<Return<any, any, InstanceT>, 'message'>], MessageT>,
+        public message : (result:Omit<Return<any, any, InstanceT>, 'message'>)=>MessageT,
     ) {
     }
 

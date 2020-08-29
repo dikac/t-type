@@ -1,7 +1,6 @@
 import Value from "@dikac/t-value/value";
 import Validatable from "@dikac/t-validatable/validatable";
 import Message from "@dikac/t-message/message";
-import Function from "@dikac/t-function/function";
 import MergeWrapper from "@dikac/t-validator/validatable/readonly-merge";
 import MessageCallback from "@dikac/t-validator/validatable/callback";
 import TypeBoolean from "../value/boolean/type";
@@ -17,7 +16,7 @@ export default class Type<ValueT = unknown, TypeT extends Native = Native, Messa
     constructor(
         value : ValueT,
         type : TypeT,
-        message : Function<[Readonly<Value<ValueT> & TypeInterface<TypeT> & Validatable>], MessageT>,
+        message : (result:Readonly<Value<ValueT> & TypeInterface<TypeT> & Validatable>)=>MessageT,
     ) {
 
         let container : Value<ValueT> & TypeInterface<TypeT> = {
