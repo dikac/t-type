@@ -4,13 +4,13 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "@dikac/t-validator/validatable/readonly-merge", "@dikac/t-validator/validatable/callback", "../value/boolean/instance"], factory);
+        define(["require", "exports", "@dikac/t-validator/validatable/readonly-merge", "@dikac/t-validator/validatable/callback-function", "../value/boolean/instance"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     const readonly_merge_1 = require("@dikac/t-validator/validatable/readonly-merge");
-    const callback_1 = require("@dikac/t-validator/validatable/callback");
+    const callback_function_1 = require("@dikac/t-validator/validatable/callback-function");
     const instance_1 = require("../value/boolean/instance");
     class Instance extends readonly_merge_1.default {
         constructor(value, instance, message) {
@@ -18,7 +18,7 @@
                 instance: instance,
                 value: value,
             };
-            let msg = callback_1.default(container, instance_1.default, () => message(this));
+            let msg = callback_function_1.default(container, instance_1.default, () => message(this));
             super(container, msg, msg);
             this.instance = instance;
         }

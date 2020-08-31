@@ -1,13 +1,13 @@
 {
   "name": "@dikac/t-type",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Typescript type",
   "dependencies": {
     "@dikac/deployer": "^0.1.5",
-    "@dikac/t-function": "^0.12.2",
+    "@dikac/t-function": "^0.12.3",
     "@dikac/t-message": "^0.8.9",
     "@dikac/t-validatable": "^0.18.6",
-    "@dikac/t-validator": "^0.15.4",
+    "@dikac/t-validator": "^0.16.0",
     "@dikac/t-value": "^0.12.4",
     "ts-toolbelt": "^6.15.5"
   },
