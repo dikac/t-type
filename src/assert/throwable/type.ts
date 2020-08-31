@@ -1,5 +1,5 @@
 import Native from "../../string/native";
-import TypeString from "../../boolean/string/type";
+import TypeString from "../string/type";
 
 export default function Type(
     value : unknown,

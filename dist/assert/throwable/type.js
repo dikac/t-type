@@ -4,12 +4,12 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "../../boolean/string/type"], factory);
+        define(["require", "exports", "../string/type"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    const type_1 = require("../../boolean/string/type");
+    const type_1 = require("../string/type");
     function Type(value, type, message = type_1.default, error = (v) => new Error(v)) {
         return error(message(false, value, type));
     }
