@@ -10,7 +10,7 @@
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     const instance_1 = require("../string/instance");
-    function Instance(value, instance, message = (valid, value, instance) => instance_1.default(valid, instance), error = (v) => new Error(v)) {
+    function Instance(value, instance, message = instance_1.default, error = (v) => new Error(v)) {
         return error(message(false, value, instance));
     }
     exports.default = Instance;

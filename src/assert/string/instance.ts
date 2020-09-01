@@ -1,24 +1,21 @@
-import Sentence from "@dikac/t-message/sentence";
 import Name from "@dikac/t-object/string/name";
-
-const sentence = new Sentence(
-    false,
-    '',
-    {
-        valid:'is instanceof of',
-        invalid:'is not instanceof of',
-    }, ''
-);
+import SentencesIs from "@dikac/t-string/message/sentences-is";
 
 export default function Instance<Instance extends {new(...a:unknown[]): any}>(
     valid : boolean,
+    value : object,
     instance : Instance,
     subject : string = '',
 ) : string {
 
-    sentence.subject = subject;
-    sentence.valid = valid;
-    sentence.object = Name(instance);
+    const sentence = new SentencesIs(
+        valid,
+        [subject, Name(value)],
+        {
+            valid:['is instanceof of'],
+            invalid:['is not instanceof of'],
+        }, [instance.name]
+    );
 
     return sentence.message;
 }

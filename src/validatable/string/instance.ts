@@ -4,8 +4,8 @@ import InstanceString from "../../assert/string/instance";
 import InstanceInterface from "../../instance/instance";
 
 export default function Instance(
-    object : Readonly<Value<unknown> & InstanceInterface<{new(...a:unknown[]): any}> & Validatable>
+    object : Readonly<Value<object> & InstanceInterface<{new(...a:unknown[]): any}> & Validatable>
 ) : string {
 
-    return InstanceString(object.valid, object.instance);
+    return InstanceString(object.valid, object.value, object.instance);
 }

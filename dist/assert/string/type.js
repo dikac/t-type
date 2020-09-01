@@ -4,20 +4,20 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "@dikac/t-message/sentence"], factory);
+        define(["require", "exports", "@dikac/t-string/message/sentences-is"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    const sentence_1 = require("@dikac/t-message/sentence");
-    const sentence = new sentence_1.default(false, '', {
-        valid: 'is type of',
-        invalid: 'is not type of',
-    }, '');
-    function Type(valid, type, subject = '') {
-        sentence.subject = subject;
-        sentence.valid = valid;
-        sentence.object = type;
+    const sentences_is_1 = require("@dikac/t-string/message/sentences-is");
+    function Type(valid, value, type, subject = '', conversion = value => typeof value) {
+        const sentence = new sentences_is_1.default(valid, [subject], {
+            valid: ['is type of'],
+            invalid: ['is not type of'],
+        }, [type]);
+        if (!valid && conversion) {
+            sentence.value.push(conversion(value));
+        }
         return sentence.message;
     }
     exports.default = Type;

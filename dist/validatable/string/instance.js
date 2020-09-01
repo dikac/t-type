@@ -11,7 +11,7 @@
     Object.defineProperty(exports, "__esModule", { value: true });
     const instance_1 = require("../../assert/string/instance");
     function Instance(object) {
-        return instance_1.default(object.valid, object.instance);
+        return instance_1.default(object.valid, object.value, object.instance);
     }
     exports.default = Instance;
 });

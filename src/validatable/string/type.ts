@@ -8,5 +8,5 @@ export default function Type(
     object : Readonly<Value<unknown> & TypeInterface<Native> & Validatable>
 ) : string {
 
-    return TypeofString(object.valid, object.type);
+    return TypeofString(object.valid, object.value, object.type);
 }
