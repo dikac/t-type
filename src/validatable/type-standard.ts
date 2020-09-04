@@ -1,10 +1,10 @@
-import Native from "../string/native";
+import String from "../string";
 import Type from "./type";
 import StringType from "./string/type";
 
 
 export default function TypeStandard<
-    TypeT extends Native = Native,
+    TypeT extends String = String,
     Value = unknown
 >(
     value : Value,

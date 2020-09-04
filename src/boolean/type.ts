@@ -1,7 +1,7 @@
-import Native from "../native/native";
-import TypeString from "../string/native";
+import Type from "../type";
+import TypeString from "../string";
 
-export default function Type<TypeName extends TypeString>(value : unknown, type : TypeName) : value is Native<TypeName> {
+export default function Type<TypeName extends TypeString>(value : unknown, type : TypeName) : value is Type<TypeName> {
 
     return typeof value === type;
 }

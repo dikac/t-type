@@ -1,18 +1,17 @@
-import Native from "../../string/native";
+import String from "../../string";
 import Sentence from "@dikac/t-string/message/sentence";
 import SentencesIs from "@dikac/t-string/message/sentences-is";
-
 
 
 export default function Type(
     valid : boolean,
     value : unknown,
-    type : Native,
+    type : String,
     subject : string = '',
     conversion : (value:unknown)=>string = value=>typeof value
 ) : string {
 
-    const sentence = new SentencesIs(
+    const sentence = SentencesIs(
         valid,
         [subject],
         {
@@ -23,7 +22,7 @@ export default function Type(
 
     if(!valid && conversion) {
 
-        sentence.value.push(conversion(value))
+        sentence.subject.push(conversion(value))
     }
 
     return sentence.message;

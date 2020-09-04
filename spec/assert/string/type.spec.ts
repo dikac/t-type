@@ -1,5 +1,5 @@
 import Type from "../../../dist/assert/string/type";
-import Native from "../../../dist/string/native";
+import Native from "../../../dist/string";
 
 it("enable console log", () => { spyOn(console, 'log').and.callThrough();});
 

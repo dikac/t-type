@@ -1,7 +1,7 @@
-import TypeString from "../string/native";
+import TypeString from "./string";
 
 
-type Native<Type extends TypeString> =
+type Type<Type extends TypeString> =
     Type extends "string" ? string :
     Type extends "object" ? object :
     Type extends "undefined" ? undefined :
@@ -12,4 +12,4 @@ type Native<Type extends TypeString> =
     Type extends "function" ? ()=>any :
     never;
 
-export default Native;
+export default Type;

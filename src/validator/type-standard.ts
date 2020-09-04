@@ -1,4 +1,4 @@
-import NativeList from "../string/native";
+import NativeList from "../string";
 import Type, {Interface} from "./type";
 import StringType from "../validatable/string/type";
 

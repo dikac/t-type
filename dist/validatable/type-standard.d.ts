@@ -1,3 +1,3 @@
-import Native from "../string/native";
+import String from "../string";
 import Type from "./type";
-export default function TypeStandard<TypeT extends Native = Native, Value = unknown>(value: Value, type: TypeT): Type<Value, TypeT, string>;
+export default function TypeStandard<TypeT extends String = String, Value = unknown>(value: Value, type: TypeT): Type<Value, TypeT, string>;

@@ -1,8 +1,8 @@
 /**
  * multi purpose type interface
  */
-export default interface Type<TypeT extends string>  {
-    type : TypeT;
+export default interface Type<TypeName extends string>  {
+    type : TypeName;
 }
 
 

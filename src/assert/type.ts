@@ -1,7 +1,7 @@
 import Guard from "../boolean/type";
 import Callback from "@dikac/t-function/assert/callback";
 import TypeError from "./throwable/type";
-import TypeString from "../string/native";
+import TypeString from "../string";
 
 export default function Type<TypeName extends TypeString = TypeString>(
     value : unknown,

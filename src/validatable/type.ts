@@ -5,10 +5,10 @@ import MergeWrapper from "@dikac/t-validator/validatable/readonly-merge";
 import MessageCallback from "@dikac/t-validator/validatable/callback-function";
 import TypeBoolean from "../value/boolean/type";
 import TypeInterface from "../type/type";
-import Native from "../string/native";
+import String from "../string";
 
 
-export default class Type<ValueT = unknown, TypeT extends Native = Native, MessageT = unknown>
+export default class Type<ValueT = unknown, TypeT extends String = String, MessageT = unknown>
     extends MergeWrapper<Value<ValueT>, Message<MessageT>, Validatable>
 {
     readonly type : TypeT;

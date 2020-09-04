@@ -4,15 +4,22 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "../../assert/string/instance"], factory);
+        define(["require", "exports"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    const instance_1 = require("../../assert/string/instance");
-    function Instance(object) {
-        return instance_1.default(object.valid, object.value, object.instance);
-    }
-    exports.default = Instance;
+    const Types = [
+        "object",
+        "string",
+        "undefined",
+        "boolean",
+        "number",
+        "bigint",
+        "symbol",
+        "function"
+    ];
+    Object.freeze(Types);
+    exports.default = Types;
 });
-//# sourceMappingURL=instance.js.map
+//# sourceMappingURL=types.js.map

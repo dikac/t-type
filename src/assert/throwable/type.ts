@@ -1,10 +1,10 @@
-import Native from "../../string/native";
+import String from "../../string";
 import TypeString from "../string/type";
 
 export default function Type(
     value : unknown,
-    type : Native,
-    message : (valid:boolean, value:unknown, type:Native)=>string = TypeString,
+    type : String,
+    message : (valid:boolean, value:unknown, type:String)=>string = TypeString,
     error : (message:string)=>Error = (v)=>new Error(v),
 ) : Error {
 
