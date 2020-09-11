@@ -1,6 +1,5 @@
 import String from "../../string";
-import Sentence from "@dikac/t-string/message/sentence";
-import SentencesIs from "@dikac/t-string/message/sentences-is";
+import SentencesMust from "@dikac/t-string/message/sentences-must";
 
 
 export default function Type(
@@ -11,18 +10,13 @@ export default function Type(
     conversion : (value:unknown)=>string = value=>typeof value
 ) : string {
 
-    const sentence = SentencesIs(
-        valid,
-        [subject],
-        {
-            valid:['is type of'],
-            invalid:['is not type of'],
-        }, [type]
-    );
+    const sentence =  SentencesMust(valid,[subject]);
+    sentence.expect =  ['type of', type];
+    sentence.comma =  ['expect'];
 
     if(!valid && conversion) {
 
-        sentence.subject.push(conversion(value))
+        sentence.actual.push('actual', conversion(value))
     }
 
     return sentence.message;

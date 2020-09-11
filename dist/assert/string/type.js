@@ -4,19 +4,18 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "@dikac/t-string/message/sentences-is"], factory);
+        define(["require", "exports", "@dikac/t-string/message/sentences-must"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    const sentences_is_1 = require("@dikac/t-string/message/sentences-is");
+    const sentences_must_1 = require("@dikac/t-string/message/sentences-must");
     function Type(valid, value, type, subject = '', conversion = value => typeof value) {
-        const sentence = sentences_is_1.default(valid, [subject], {
-            valid: ['is type of'],
-            invalid: ['is not type of'],
-        }, [type]);
+        const sentence = sentences_must_1.default(valid, [subject]);
+        sentence.expect = ['type of', type];
+        sentence.comma = ['expect'];
         if (!valid && conversion) {
-            sentence.subject.push(conversion(value));
+            sentence.actual.push('actual', conversion(value));
         }
         return sentence.message;
     }
